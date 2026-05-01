@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Team Task Manager
 
-## Getting Started
+A full-stack, role-based task management web application built with **Next.js (App Router)**, **Tailwind CSS**, and **MongoDB**.
 
-First, run the development server:
+## Features
 
+- **Authentication**: JWT-based login and registration.
+- **Role-based Access Control**: 
+  - **Admins**: Can create projects, create tasks, assign tasks to members, and delete tasks/projects.
+  - **Members**: Can view their assigned tasks and update their task status (To Do -> In Progress -> Done).
+- **Projects**: Group tasks logically by projects.
+- **Tasks Dashboard**: Visual status tracking and simple updates.
+- **Beautiful UI**: Modern, glassmorphism design with Tailwind CSS and Lucide React icons.
+
+## Local Development
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Environment Variables
+Create a `.env.local` file in the root directory and add the following variables:
+```env
+# Your MongoDB connection string
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/team-task-manager?retryWrites=true&w=majority
+
+# Secret for JWT signing
+JWT_SECRET=supersecretjwtkey_please_change_this
+```
+
+### 3. Run the Development Server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploying to Railway (Mandatory Assignment Step)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Push your code to GitHub**.
+   - Create a new repository on GitHub.
+   - Run:
+     ```bash
+     git add .
+     git commit -m "Initial commit"
+     git branch -M main
+     git remote add origin https://github.com/your-username/your-repo.git
+     git push -u origin main
+     ```
 
-## Learn More
+2. **Deploy on Railway**:
+   - Go to [Railway.app](https://railway.app/).
+   - Click **New Project** -> **Deploy from GitHub repo**.
+   - Select the repository you just created.
+   - Click **Add a Database** -> **MongoDB**.
+   - Once MongoDB is provisioned, go to your Next.js application's **Variables** settings in Railway.
+   - Add the following Environment Variables:
+     - `MONGODB_URI`: (Copy the connection URL from your Railway MongoDB service).
+     - `JWT_SECRET`: (Set to any random secret string).
+   - Railway will automatically detect Next.js, install dependencies, run `npm run build`, and start the app!
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+- Next.js 15
+- React 19
+- Tailwind CSS v4
+- MongoDB (Mongoose)
+- JWT (jsonwebtoken)
+- Zustand (State management)
+- Lucide React (Icons)
